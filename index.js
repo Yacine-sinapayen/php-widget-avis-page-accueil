@@ -1,3 +1,17 @@
+/* appel vers l'api afin de récupérer les notes */
+function getdata(){
+    fetch('http://localhost:3009/avis')
+    .then((resp) => resp.json())
+    .then(function(data) {
+        console.log(data)
+    })
+  
+}
+getdata()
+
+
+console.log('js work')
+
 // Note initiales des télévisons
 const ratings = {
     sony: 3,
@@ -9,45 +23,6 @@ const ratings = {
   
   // Nombre total d'étoiles qu'une television peut avoir
   const starsTotal = 5;
-  console.log("hello world")
-  // Lancer la fonction getRatings quand le DOM est chargé
-  document.addEventListener("DOMContentLoaded", getRatings);
-  
-  // Je récupère les éléments des formulaire "Select product" et "Note entre 1-5"
-  const productSelect = document.getElementById("product-select");
-  const ratingControl = document.getElementById("rating-control");
-  
-  // J'initilise ma let product qui correspondra à la clés <=> télévision sélectionée dans
-  // le premier formulaire
-  let product;
-  
-  // Cette fonction me renvoie la télévision sélectionée dans ma let product.
-  productSelect.addEventListener("change", (e) => {
-    // Me renvoie la télévision sélectionée
-    product = e.target.value;
-    // Permet de modifier la note récupérée dans le formulaire
-    ratingControl.disabled = false;
-    // La valeur de mon second formulaire = à la note de la télévion sélectionée. rating = l'objet, product = clés de l'objet
-    ratingControl.value = ratings[product];
-  });
-  
-  // Cette fonction me permet de modifier la note récupérée dans le second
-  // formulaire "ratingControl". Puis de maj mon tableau en faisant appel à la fontion getRating().
-  ratingControl.addEventListener("keypress", (e) => {
-    const rating = e.target.value;
-  
-    //   Make sur 5 or under
-    if (rating > 5) {
-      alert("Veuillez saisir une note 1 et 5");
-      return;
-    }
-  
-    //  J'attribue à la clés de mon objet une nouvelle note
-    ratings[product] = rating;
-  
-    // Puis je met à jour le tableau
-    getRatings();
-  });
   
   // Récupération des notes
   function getRatings() {
@@ -70,13 +45,8 @@ const ratings = {
       // Enfin j'indique à quelle % je veux que la largeur de mon élement "star-inner" soit remplis.
       // "star-inner" est une class dans laquelle j'ai inséré des étoile directement via mon css et sa largeur est définie
       // par le % de starPercentageRounded. Le % restant est rempli par "star-outer"
-      document.querySelector(`.${rating} .stars-inner`).style.width =
+      document.querySelector(`.stars-inner`).style.width =
         starPercentageRounded;
-  
-      //  Ajouter une nouvelle note écrite
-      document.querySelector(`.${rating} .number-rating`).innerHTML =
-        ratings[rating];
     }
   }
-
-  
+  getRatings()

@@ -1,18 +1,7 @@
-<?php
-// <!-- Création de la ressource curl -->
-$url = "http://localhost:3009/avis";
-$ch = curl_init();
+<?php include_once('./api.php'); ?>
 
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$data = curl_exec($ch);
-curl_close($ch);
-$responses = json_decode($data, true);
-// var_dump($responses);
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +9,6 @@ $responses = json_decode($data, true);
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/880140e94c.js" crossorigin="anonymous"></script>
     <title>Widget-LearnyLib</title>
-
 </head>
 
 <body>
@@ -28,7 +16,7 @@ $responses = json_decode($data, true);
     <?php foreach (($responses) as $response) : ?>
         <article class="block mrb-b10">
             <div class="stars-outer">
-                <div class="stars-inner"></div>
+                <div id="stars-inner" class="stars-inner"></div>
             </div>
             <p>Note <?php echo $response['rating']; ?></p>
             <h3><?php echo $response['pseudo']; ?></h3>
@@ -36,7 +24,6 @@ $responses = json_decode($data, true);
             <p><?php echo $response['created_at']; ?></p>
         </article>
     <?php endforeach ?>
-    <script src="index.js"></script>
+<script src="index.js"></script>
 </body>
-
 </html>
