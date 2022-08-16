@@ -1,52 +1,42 @@
-/* appel vers l'api afin de récupérer les notes */
-function getdata(){
-    fetch('http://localhost:3009/avis')
-    .then((resp) => resp.json())
-    .then(function(data) {
-        console.log(data)
-    })
-  
-}
-getdata()
+/*-------  Stars system -------*/
+function starsSystem() {
+  // reviews me renvoie un tableau d'avis
+  const reviews = document.getElementsByClassName("reviews");
 
+  // Je boucle sur mon tableau d'avis
+  for (const element of reviews) {
+    // Je récupère la note de mes avis
+    /* element.dataset.rating <=> data-rating=" <php echo $response['rating']; ?>" qui me permetd erécupérer la note de chaque éléments */
+    rating = element.dataset.rating;
 
-console.log('js work')
+    // Je récupère l'id de mes avis afin de faire une corrspondance avec leur notes plus bas
+    id = element.id;
 
-// Note initiales des télévisons
-const ratings = {
-    sony: 3,
-    samsung: 3.4,
-    vizio: 2.3,
-    panasonic: 3.6,
-    philips: 4.1,
-  };
-  
-  // Nombre total d'étoiles qu'une television peut avoir
-  const starsTotal = 5;
-  
-  // Récupération des notes
-  function getRatings() {
-    // Je boucle sur l'objet ratings
-    for (let rating in ratings) {
-      // console.log(ratings); me renvoie les clés de l'objet ratings
-      // console.log(ratings[rating]); me renvoie les valeurs de l'objet ratings
-  
-      // Récupération du pourcentage
-      const starPercentage = (ratings[rating] / starsTotal) * 100;
-      // console.log(starPercentage);
-  
-      // Arrondir à la dizaine la plus proche.
-      const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
-      console.log(starPercentageRounded)
-  
-      // Définir la largeur des étoiles intérieures en pourcentage. Pour cela, récupérer les class de chaque téléviseur et cibler les "stars-inner" (intérieur des étoiles)  pour les remplir avec ma const "starPercentageRounded".
-      // En params je récuprère la class de chaque téléviseur grâce à ma let
-      // rating = les clés de l'objet ratings.
-      // Enfin j'indique à quelle % je veux que la largeur de mon élement "star-inner" soit remplis.
-      // "star-inner" est une class dans laquelle j'ai inséré des étoile directement via mon css et sa largeur est définie
-      // par le % de starPercentageRounded. Le % restant est rempli par "star-outer"
-      document.querySelector(`.stars-inner`).style.width =
-        starPercentageRounded;
-    }
+    // Je convertie mes reviews en pourcentage
+    const starPercentage = Math.round((rating / 5) * 100);
+
+    // je target mes étoiles
+    var stars = document.getElementById(`rating-${id}`);
+
+    // j'intencie la width de mes étoiles
+    stars.style.width = starPercentage + "%";
   }
-  getRatings()
+}
+starsSystem()
+
+/*------- Fonction qui gère le slider -------*/
+new Splide(".splide", {
+  type: "loop",
+  // autoplay: 'false',
+  perPage: 3,
+  gap: "1rem",
+  breakpoints: {
+    870: {
+      perPage: 2,
+    },
+    640: {
+      perPage: 1,
+    },
+  },
+}).mount();
+
