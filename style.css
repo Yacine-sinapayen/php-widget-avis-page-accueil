@@ -1,10 +1,20 @@
-.block
-{
+/* --------------- Fonts used : Poppins + Abril Fatface --------------- */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800&display=swap");.block
+.block{
 	height:auto;
 	padding:10px;
     border: 1px solid rgba(213, 203, 203, 0.5);
 	border-radius:8px;
 	background-color:var(--white);
+    font-family: "Poppins", sans-serif;
+}
+
+.light{
+    color: #c90e2a!important;
+}
+
+.commentaire{
+    color: red;
 }
 
 .mrb-b10{
@@ -75,3 +85,4 @@
 .w80p{width:80%;}
 .w90p{width:90%;}
 .w100p{width:100%;}
+

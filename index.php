@@ -13,6 +13,9 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Css -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Stars font -->
     <script src="https://kit.fontawesome.com/880140e94c.js" crossorigin="anonymous"></script>
 
@@ -20,8 +23,6 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
     <script src="./splide-4.0.7/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide.min.css">
 
-    <!-- Css -->
-    <link rel="stylesheet" href="style.css">
 
     <title>Widget-LearnyLib</title>
 </head>
@@ -33,13 +34,31 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
                 <ul class="splide__list">
                     <!-- Je boucle sur mes données -->
                     <?php foreach (($responses) as $response) : ?>
-                        <article class="splide__slide block mrb-b10 reviews" id="<?= $response['id'] ?>" data-rating="<?php echo $response['rating']; ?>">
-                            <div class=" stars-outer">
+                        <article 
+                        class="splide__slide block mrb-b10 reviews" 
+                        id="<?= $response['id'] ?>" 
+                        data-rating="<?php echo $response['rating']; ?>" 
+                        style='font-family: "Poppins", sans-serif;'>
+                            <div class="stars-outer">
                                 <div class="stars-inner" id='rating-<?php echo $response['id'] ?>'></div>
                             </div>
                             <h3><?php echo $response['pseudo']; ?></h3>
-                            <p> Commentaire <?php echo $response['comment']; ?></p>
-                            <p><?php echo $response['created_at']; ?></p>
+                            <p><?php echo $response['comment']; ?></p>
+
+                            <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
+                            <p style='
+                            color:rgba(213, 203, 203, 0.7);
+                            font-size:0.8rem;
+                            ' ;>
+                                <?php $original_date = $response['created_at'];
+
+                                $timestamp = strtotime($original_date);
+
+                                $new_date = date("d-m-Y", $timestamp);
+
+                                echo $new_date;
+                                ?></p>
+                            <p></p>
                         </article>
                     <?php endforeach ?>
                 </ul>
