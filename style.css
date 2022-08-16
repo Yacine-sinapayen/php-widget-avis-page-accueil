@@ -41,3 +41,37 @@
     font-weight: 900;
     color: #f8ce0b;
 }
+
+/* Carroussel style */
+.splide__slide p {
+    width: 100%;
+    height: auto;
+  }
+
+  .container{
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.mrg-auto{
+    margin: auto;
+}
+
+/* WIDTHS */
+.w20{width:20px;min-width:20px;max-width:20px;overflow-x: hidden;}
+.w30{width:30px;min-width:30px;max-width:30px;overflow-x: hidden;}
+.w50{width:50px;min-width:50px;max-width:50px;overflow-x: hidden;}
+.w150{width:150px;min-width:150px;max-width:150px;overflow-x: hidden;}
+.w120{width:120px;min-width:120px;max-width:120px;overflow-x: hidden;}
+.w200{width:200px;min-width:200px;max-width:200px;overflow-x: hidden;}
+.w300{width:300px;min-width:300px;max-width:300px;overflow-x: hidden;}
+.w400{width:400px;min-width:400px;max-width:400px;overflow-x: hidden;}
+.w25p{width:25%;}
+.w40p{width:40%}
+.w50p{width:50%;}
+.w60p{width:60%;}
+.w75p{width:75%;}
+.w80p{width:80%;}
+.w90p{width:90%;}
+.w100p{width:100%;}
