@@ -28,8 +28,8 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
 </head>
 
 <body>
-    <div class="container">
-        <section class="splide" aria-label="Splide Basic HTML Example">
+
+        <section class="splide mrg-auto" >
             <div class="splide__track">
                 <ul class="splide__list">
                     <!-- Je boucle sur mes données -->
@@ -64,7 +64,6 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
                 </ul>
             </div>
         </section>
-    </div>
     <script src="index.js"></script>
 </body>
 

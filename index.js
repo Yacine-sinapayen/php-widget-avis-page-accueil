@@ -27,6 +27,7 @@ starsSystem()
 /*------- Fonction qui gère le slider -------*/
 new Splide(".splide", {
   type: "loop",
+  width:'80%',
   // autoplay: 'false',
   perPage: 3,
   gap: "1rem",

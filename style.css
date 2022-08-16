@@ -9,12 +9,8 @@
     font-family: "Poppins", sans-serif;
 }
 
-.light{
-    color: #c90e2a!important;
-}
-
-.commentaire{
-    color: red;
+.mrg-auto{
+    margin: auto !important;
 }
 
 .mrb-b10{
@@ -52,21 +48,6 @@
     color: #f8ce0b;
 }
 
-/* Carroussel style */
-.splide__slide p {
-    width: 100%;
-    height: auto;
-  }
-
-  .container{
-	width: 95%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.mrg-auto{
-    margin: auto;
-}
 
 /* WIDTHS */
 .w20{width:20px;min-width:20px;max-width:20px;overflow-x: hidden;}
