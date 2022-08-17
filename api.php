@@ -6,7 +6,6 @@ parse_str($components['query'], $results);
 echo($results['formation']); 
 
 ou bien 
-
 echo $_GET['formation']
 -->
 
@@ -22,14 +21,14 @@ curl_close($ch);
 $responses = json_decode($data, true);
 
 
-// Je ne récupère que les notes au dessus de 4
+//----- Je ne récupère que les notes au dessus de 4 -----//
 $goodValues = array_filter($responses, function ($e) {
     return $e['rating'] >= "4";
     //Use this to be sure
     //return strtolower($e['type']) == "good";
 });
 
-// Parmis ces notes au dessus de 4 je ne veux que les 10 dernières
+//----- Parmis ces notes au dessus de 4 je ne veux que les 10 dernières -----//
 $new_array = array_slice($goodValues, 0, 10);
 
 // print_r( $new_array);
