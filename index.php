@@ -29,41 +29,52 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
 
 <body>
 
-        <section class="splide mrg-auto" >
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <!-- Je boucle sur mes données -->
-                    <?php foreach (($responses) as $response) : ?>
-                        <article 
-                        class="splide__slide block mrb-b10 reviews" 
-                        id="<?= $response['id'] ?>" 
-                        data-rating="<?php echo $response['rating']; ?>" 
-                        style='font-family: "Poppins", sans-serif;'>
-                            <div class="stars-outer">
-                                <div class="stars-inner" id='rating-<?php echo $response['id'] ?>'></div>
+    <section class="splide mrg-auto">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <!-- Je boucle sur mes données -->
+                <?php foreach (($new_array) as $response) : ?>
+                    <article 
+                    class="block splide__slide  mrb-b10 reviews" 
+                    id="<?= $response['id'] ?>" 
+                    data-rating="<?php echo $response['rating']; ?>" 
+                    style='
+                        font-family: "Lato", sans-serif;
+                        font-size:16px;
+                        height:auto;
+	                    padding:10px;
+                        border: 1px solid rgba(213, 203, 203, 0.5);
+	                    border-radius:8px;'>
+
+                        <!-- Étoiles -->
+                        <div class="stars-outer">
+                            <div 
+                                class="stars-inner" id='rating-<?php echo $response['id'] ?>'>
                             </div>
-                            <h3><?php echo $response['pseudo']; ?></h3>
-                            <p><?php echo $response['comment']; ?></p>
+                        </div>
 
-                            <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
-                            <p style='
-                            color:rgba(213, 203, 203, 0.7);
-                            font-size:0.8rem;
-                            ' ;>
-                                <?php $original_date = $response['created_at'];
+                        <h3 style='font-size:16px;'>
+                            <?php echo $response['pseudo']; ?>
+                        </h3>
+                        <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
+                        <p style='color:rgba(213, 203, 203, 0.7);font-size:0.8rem;' ;>
+                            <?php $original_date = $response['created_at'];
 
-                                $timestamp = strtotime($original_date);
+                            $timestamp = strtotime($original_date);
 
-                                $new_date = date("d-m-Y", $timestamp);
+                            $new_date = date("d/m/Y", $timestamp);
 
-                                echo $new_date;
-                                ?></p>
-                            <p></p>
-                        </article>
-                    <?php endforeach ?>
-                </ul>
-            </div>
-        </section>
+                            echo "Le " . $new_date;
+                            ?>
+                        </p>
+                        <p>
+                            <?php echo $response['comment']; ?>
+                        </p>
+                    </article>
+                <?php endforeach ?>
+            </ul>
+        </div>
+    </section>
     <script src="index.js"></script>
 </body>
 

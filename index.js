@@ -26,9 +26,10 @@ starsSystem()
 
 /*------- Fonction qui gère le slider -------*/
 new Splide(".splide", {
-  type: "loop",
+  // type: "loop",
+  // autoplay: "ture",
+  fixedWidth : '20rem',
   width:'80%',
-  // autoplay: 'false',
   perPage: 3,
   gap: "1rem",
   breakpoints: {
