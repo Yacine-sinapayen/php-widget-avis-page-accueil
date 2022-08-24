@@ -14,7 +14,7 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 
     <!-- Stars font -->
     <script src="https://kit.fontawesome.com/880140e94c.js" crossorigin="anonymous"></script>
@@ -46,7 +46,7 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
                             <?= $response['name']; ?>
                         </h3>
                         <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
-                        <!-- <p style='color:rgba(213, 203, 203, 0.7);font-size:0.8rem;' ;>
+                        <p class="date">
                             <?php $original_date = $response['created_at'];
 
                             $timestamp = strtotime($original_date);
@@ -55,7 +55,7 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
 
                             echo "Le " . $new_date;
                             ?>
-                        </p> -->
+                        </p>
                         <p>
                             <?= $response['comment']; ?>
                         </p>

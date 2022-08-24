@@ -7,7 +7,7 @@ $nameCourse = isset($_GET['formation']) ? $_GET['formation'] : '' ;
 // var_dump($nameCourse);
 
 // Je récupère les avis de ma formation depuis mon api
-$api = "https://formations.learnylib.com/api/v1/ws/courses/{$nameCourse}/reviews";
+$api = "https://formations.learnylib.com/api/v1/ws/courses/facettes/reviews";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $api);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
