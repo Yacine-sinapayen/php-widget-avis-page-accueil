@@ -1,69 +1,48 @@
 /* --------------- Fonts used : Poppins + Abril Fatface --------------- */
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800&display=swap");.block
-.block{
-	height:auto;
-	padding:10px;
-    border: 1px solid rgba(213, 203, 203, 0.5);
-	border-radius:8px;
-	
-   
-}
-
-.mrg-auto{
-    margin: auto !important;
-}
-
-.mrb-b10{
-    margin-bottom: 10px;
-}
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 /* ------- Mise en place du sytème d'étoiles ------- */
 
-.stars-outer{
-    position: relative;
-    display: inline-block;
-
+.stars-outer {
+  position: relative;
+  display: inline-block;
 }
 
 .stars-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-  }
-
-.stars-outer::before{
-    content: "\f005 \f005 \f005 \f005 \f005";
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    color: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
 }
 
-.stars-inner::before{
-    content: "\f005 \f005 \f005 \f005 \f005";
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    color: #f8ce0b;
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ccc;
 }
 
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+}
 
-/* WIDTHS */
-.w20{width:20px;min-width:20px;max-width:20px;overflow-x: hidden;}
-.w30{width:30px;min-width:30px;max-width:30px;overflow-x: hidden;}
-.w50{width:50px;min-width:50px;max-width:50px;overflow-x: hidden;}
-.w150{width:150px;min-width:150px;max-width:150px;overflow-x: hidden;}
-.w120{width:120px;min-width:120px;max-width:120px;overflow-x: hidden;}
-.w200{width:200px;min-width:200px;max-width:200px;overflow-x: hidden;}
-.w300{width:300px;min-width:300px;max-width:300px;overflow-x: hidden;}
-.w400{width:400px;min-width:400px;max-width:400px;overflow-x: hidden;}
-.w25p{width:25%;}
-.w40p{width:40%}
-.w50p{width:50%;}
-.w60p{width:60%;}
-.w75p{width:75%;}
-.w80p{width:80%;}
-.w90p{width:90%;}
-.w100p{width:100%;}
+article {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  border: 1px solid rgba(213, 203, 203, 0.5);
+  border-radius: 8px;
+}
 
+.block {
+  height: auto;
+  padding: 10px;
+  border: 1px solid rgba(213, 203, 203, 0.5);
+  border-radius: 8px;
+}
