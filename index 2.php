@@ -13,12 +13,15 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Css -->
+    <link rel="stylesheet" href="./style.css">
+
     <!-- Stars font -->
     <script src="https://kit.fontawesome.com/880140e94c.js" crossorigin="anonymous"></script>
 
     <!-- Slider library -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
-    <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide-core.min.css">
+    <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide.min.css">
 
     <title>Widget-LearnyLib</title>
 </head>
@@ -31,7 +34,14 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
                 <ul class="splide__list">
                     <!-- Je boucle sur mes données -->
                     <?php foreach (($new_array) as $response) : ?>
-                        <article class="block splide__slide reviews" id="<?= $response['id'] ?>" data-rating="<?= $response['rating']; ?>">
+                        <article 
+                        style="  
+                        font-family: 'Lato', sans-serif;
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: #333;
+                        line-height: 1.2em;"
+                        class="block splide__slide reviews" id="<?= $response['id'] ?>" data-rating="<?= $response['rating']; ?>">
 
                             <!-- Étoiles -->
                             <div class="stars-outer">
@@ -89,40 +99,23 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
         }
         starsSystem()
 
-        /*-------  Slider -------*/
-        // Je récupère la taille de mon tableau d'avis
-        const arrayJs = "<?= count($new_array) ?>"
-
-        // Si ma class splide existe ça veut dire que j'ai récupérer des avis donc j'affiche mon slider
         if (document.querySelector('.splide')) {
-            console.log(arrayJs)
-            // si mon tableau ne contient que 1 ou 2 avis j'en affiche un par page Sinon c'est 3.
-            if (arrayJs < 3) {
-                new Splide('.splide', {
-                    type: 'loop',
-                    autoplay: 'true',
-                    width: '20rem',
-                    perPage: 1,
-                    gap: '1rem',
-                }).mount();
-            } else {
-                /*------- Fonction qui gère le slider -------*/
-                new Splide('.splide', {
-                    type: 'loop',
-                    autoplay: 'true',
-                    width: '80%',
-                    perPage: 3,
-                    gap: '1rem',
-                    breakpoints: {
-                        870: {
-                            perPage: 2,
-                        },
-                        640: {
-                            perPage: 1,
-                        },
+            /*------- Fonction qui gère le slider -------*/
+            new Splide('.splide', {
+                type: 'loop',
+                autoplay: 'true',
+                width: '80%',
+                perPage: 3,
+                gap: '1rem',
+                breakpoints: {
+                    870: {
+                        perPage: 2,
                     },
-                }).mount();
-            }
+                    640: {
+                        perPage: 1,
+                    },
+                },
+            }).mount();
         }
     </script>
 </body>
