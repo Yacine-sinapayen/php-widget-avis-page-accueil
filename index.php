@@ -21,50 +21,50 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
 
     <!-- Slider library -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
-    <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide.min.css">
+    <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide-core.min.css">
 
     <title>Widget-LearnyLib</title>
 </head>
 
 <body>
-<!-- Ma section n'apparaît que si mon tableau contient des elem -->
-<?php if(count($new_array) > 0): ?>
-    <section class="splide">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <!-- Je boucle sur mes données -->
-                <?php foreach (($new_array) as $response) : ?>
-                    <article class="block splide__slide reviews" id="<?= $response['id'] ?>" data-rating="<?= $response['rating']; ?>">
+    <!-- Ma section n'apparaît que si mon tableau contient des elem -->
+    <?php if (count($new_array) > 0) : ?>
+        <section class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <!-- Je boucle sur mes données -->
+                    <?php foreach (($new_array) as $response) : ?>
+                        <article class="block splide__slide reviews" id="<?= $response['id'] ?>" data-rating="<?= $response['rating']; ?>">
 
-                        <!-- Étoiles -->
-                        <div class="stars-outer">
-                            <div class="stars-inner" id='rating-<?= $response['id'] ?>'>
+                            <!-- Étoiles -->
+                            <div class="stars-outer">
+                                <div class="stars-inner" id='rating-<?= $response['id'] ?>'>
+                                </div>
                             </div>
-                        </div>
 
-                        <h3 style='font-size:16px;'>
-                            <?= $response['name']; ?>
-                        </h3>
-                        <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
-                        <p class="date">
-                            <?php $original_date = $response['created_at'];
+                            <h3 style='font-size:16px;'>
+                                <?= $response['name']; ?>
+                            </h3>
+                            <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
+                            <p class="date">
+                                <?php $original_date = $response['created_at'];
 
-                            $timestamp = strtotime($original_date);
+                                $timestamp = strtotime($original_date);
 
-                            $new_date = date("d/m/Y", $timestamp);
+                                $new_date = date("d/m/Y", $timestamp);
 
-                            echo "Le " . $new_date;
-                            ?>
-                        </p>
-                        <p>
-                            <?= $response['comment']; ?>
-                        </p>
-                    </article>
-                <?php endforeach ?>
-            </ul>
-        </div>
-    </section>
-    <?php endif ;?>
+                                echo "Le " . $new_date;
+                                ?>
+                            </p>
+                            <p>
+                                <?= $response['comment']; ?>
+                            </p>
+                        </article>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        </section>
+    <?php endif; ?>
     <script>
         /*-------  Stars system -------*/
         function starsSystem() {
@@ -92,23 +92,47 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
         }
         starsSystem()
 
-        if(document.querySelector('.splide')){
-            /*------- Fonction qui gère le slider -------*/
-            new Splide('.splide', {
-                type: 'loop',
-                autoplay: 'true',
-                width: '80%',
-                perPage: 3,
-                gap: '1rem',
-                breakpoints: {
-                    870: {
-                        perPage: 2,
+        /*-------  Slider -------*/
+        // Je récupère la taille de mon tableau d'avis
+        const arrayJs = "<?= count($new_array) ?>"
+
+        // Si ma class splide existe ça veut dire que j'ai récupérer des avis donc j'affiche mon slider
+        if (document.querySelector('.splide')) {
+            // si mon tableau ne contient que 1 ou 2 avis j'en affiche un par page Sinon c'est 3.
+            if (arrayJs < 2) {
+                new Splide('.splide', {
+                    type: 'loop',
+                    autoplay: 'true',
+                    width: '20rem',
+                    perPage: 1,
+                    gap: '1rem',
+                    breakpoints: {
+                        870: {
+                            perPage: 2,
+                        },
+                        640: {
+                            perPage: 1,
+                        },
                     },
-                    640: {
-                        perPage: 1,
+                }).mount();
+            } else {
+                /*------- Fonction qui gère le slider -------*/
+                new Splide('.splide', {
+                    type: 'loop',
+                    autoplay: 'true',
+                    width: '80%',
+                    perPage: 3,
+                    gap: '1rem',
+                    breakpoints: {
+                        870: {
+                            perPage: 2,
+                        },
+                        640: {
+                            perPage: 1,
+                        },
                     },
-                },
-            }).mount();
+                }).mount();
+            }
         }
     </script>
 </body>

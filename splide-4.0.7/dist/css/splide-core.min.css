@@ -1,4 +1,56 @@
+/* --------------- Fonts used : Poppins + Abril Fatface --------------- */
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap");
 
+/* ------- Mise en place du sytème d'étoiles ------- */
+.stars-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+}
+
+.block {
+  height: auto;
+  padding: 10px;
+  border: 1px solid rgba(213, 203, 203, 0.5);
+  border-radius: 8px;
+}
+
+.date {
+  color: rgba(213, 203, 203, 0.7) !important;
+  font-size: 0.8rem !important;
+}
+
+article {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.2em;
+}
+
+/* ------- Slider ------- */
 
 .splide__container {
   box-sizing: border-box;
@@ -148,7 +200,7 @@
   opacity: 0.7;
   padding: 0;
   position: absolute;
-  top: 106%;
+  top: 108%;
   transform: translateY(-50%);
   width: 2em;
   z-index: 1;
@@ -316,3 +368,10 @@
   top: 0;
 }
 
+article {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.2em;
+}
