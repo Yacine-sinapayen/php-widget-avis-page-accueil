@@ -37,17 +37,30 @@
   border-radius: 8px;
 }
 
-.date {
+.color-light-green{
   color: rgba(213, 203, 203, 0.7) !important;
   font-size: 0.8rem !important;
 }
 
+.card-header{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
 article {
   font-family: "Lato", sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #333;
   line-height: 1.2em;
+}
+h3, p{
+  margin: 0;
+}
+
+.mrgb{
+  margin-bottom: 1rem;
 }
 
 /* ------- Slider ------- */

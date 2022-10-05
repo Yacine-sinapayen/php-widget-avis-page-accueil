@@ -1,8 +1,3 @@
-<!-- Je récupère le nom de la formation depuis l'url -->
-
-<!-- Je récupère les 10 derniers avis de cette formation ayant une note 
-au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une requête sql ou trop dangereux ?) -->
-<!-- Pour le moment je récupère des avis depuis une fausse bdd -->
 <?php include_once('./api.php'); ?>
 
 <!DOCTYPE html>
@@ -19,8 +14,10 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
     <!-- Slider library -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide-core.min.css">
+    <link rel="stylesheet" href="./splide-4.0.7/dist/css/style.css">
 
-    <title>Widget-LearnyLib</title>
+
+    <title>HomePage reviews</title>
 </head>
 
 <body>
@@ -29,33 +26,41 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
         <section class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <!-- Je boucle sur mes données -->
                     <?php foreach (($new_array) as $response) : ?>
                         <article class="block splide__slide reviews" id="<?= $response['id'] ?>" data-rating="<?= $response['rating']; ?>">
-
-                            <!-- Étoiles -->
-                            <div class="stars-outer">
-                                <div class="stars-inner" id='rating-<?= $response['id'] ?>'>
-                                </div>
+                            <div class="stars-outer mrgb">
+                                <div class="stars-inner" id='rating-<?= $response['id'] ?>'></div>
                             </div>
 
-                            <h3 style='font-size:16px;'>
-                                <?= $response['name']; ?>
-                            </h3>
-                            <!-- je modifie le format sql de ma date pour l'afficher au format "humain" -->
-                            <p class="date">
-                                <?php $original_date = $response['created_at'];
+                            <div class="card-header mrgb">
+                                <!-- Nom de l'apprenant -->
+                                <h3 style='font-size:16px;'>
+                                    <?= $response['name']; ?>
+                                </h3>
 
-                                $timestamp = strtotime($original_date);
-
-                                $new_date = date("d/m/Y", $timestamp);
-
-                                echo "Le " . $new_date;
-                                ?>
+                                <!-- Date -->
+                                <p class="color-light-green">
+                                    <!-- je modifie le format sql de ma date pour l'afficher au format "moldu" -->
+                                    <?php $original_date = $response['created_at'];
+                                    $timestamp = strtotime($original_date);
+                                    $new_date = date("d/m/Y", $timestamp);
+                                    echo "Le " . $new_date;
+                                    ?>
+                                </p>
+                            </div>
+                            <!-- Nom de la formation -->
+                            <p class="color-light-green mrgb">
+                            <?php 
+                                if(isset($response['course_title'])){
+                                    echo "Formation : " . $response['course_title'];
+                                }
+                            ?>
                             </p>
-                            <p>
-                                <?= $response['comment']; ?>
-                            </p>
+                           
+
+                            <!-- Commentaire -->
+                            <p><?= $response['comment']; ?></p>
+
                         </article>
                     <?php endforeach ?>
                 </ul>
@@ -99,8 +104,8 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
             // si mon tableau ne contient que 1 ou 2 avis j'en affiche un par page Sinon c'est 3.
             if (arrayJs < 3) {
                 new Splide('.splide', {
-                    type: 'loop',
-                    autoplay: 'true',
+                    // type: 'loop',
+                    // autoplay: 'true',
                     width: '20rem',
                     perPage: 1,
                     gap: '1rem',
@@ -108,8 +113,8 @@ au dessus de 4 (possible de se connecter directement à Mysql et d'effectuer une
             } else {
                 /*------- Fonction qui gère le slider -------*/
                 new Splide('.splide', {
-                    type: 'loop',
-                    autoplay: 'true',
+                    // type: 'loop',
+                    // autoplay: 'true',
                     width: '80%',
                     perPage: 3,
                     gap: '1rem',

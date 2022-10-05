@@ -1,34 +1,42 @@
-<?php 
-// Je récupère le nom de la formation depuis l'url courant de la page
+<?php
+/* si la var courseId existe ou category existe alors faire l'appel à l'api 
+correspondante sinon renvoyer null et faire l'appel à l'api globale */
+global $api;
 
-$nameCourse = isset($_GET['formation']) ? $_GET['formation'] : '' ;
+// Je vérifie que mes var existent
+$courseId = isset($_GET['formation']) ? $_GET['formation'] : '';
+$category = isset($_GET['category']) ? $_GET['category'] : '';
 
-// Je récupère les avis de ma formation depuis mon api
+/* !!! API DE PROD !!! */
+$apiCourse = "https://formations.learnylib.com/api/v1/ws/courses/{$courseId}/reviews";
+$apiCategory = "https://formations.learnylib.com/api/v2/ws/reviews?category={$category}";
+$apiReviews = "https://formations.learnylib.com/api/v2/ws/reviews";
 
-// ----- Test affichage formation avec un seul avis -----//
-//$api = "https://formations.learnylib.com/api/v1/ws/courses/recrutement/reviews";
+$apiKey = 'e6b0a3a1a8944ad3b68bd0eca9633c19bc0700c0a9a64be1aab7a83c388bf66d';
+
+if($courseId){
+    $api = $apiCourse;
+}elseif ($category) {
+    $api = $apiCategory;
+}else {
+    $api = $apiReviews;
+};
 
 
-// ----- Test affichage formation avec un deux avis -----//
-// $api = "https://formations.learnylib.com/api/v1/ws/courses/anesthesie-dentaire/reviews";
-
-//----- Test affichage formation avec plusieurs avis -----//
-// $api = "https://formations.learnylib.com/api/v1/ws/courses/facettes/reviews";
-
-//----- BONNE VERSION DE L'URL EN PROD -----//
-$api = "https://formations.learnylib.com/api/v1/ws/courses/{$nameCourse}/reviews";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $api);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    "X-Api-Key: $apiKey",
+));
 $data = curl_exec($ch);
 curl_close($ch);
 $responses = json_decode($data, true);
-
 
 //----- Je ne récupère que les notes au dessus de 4 -----//
 $goodValues = array_filter($responses, function ($e) {
     return $e['rating'] >= "4";
 });
 
-//----- Parmis ces notes au dessus de 4 je ne veux que les 10 dernières -----//
-$new_array = array_slice($goodValues, 0, 10);
+//----- Parmis ces notes au dessus de 4 je ne veux que les 20 dernières -----//
+$new_array = array_slice($goodValues, 0, 20);
