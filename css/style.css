@@ -42,6 +42,14 @@
   font-size: 0.8rem !important;
 }
 
+.formation-title {
+  font-size: 0.8rem
+}
+
+.comment{
+  font-style: italic;
+}
+
 .card-header{
   display: flex;
   flex-direction: row;

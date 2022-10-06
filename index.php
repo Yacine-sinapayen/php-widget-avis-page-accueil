@@ -14,7 +14,7 @@
     <!-- Slider library -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="./splide-4.0.7/dist/css/splide-core.min.css">
-    <link rel="stylesheet" href="./splide-4.0.7/dist/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
 
     <title>HomePage reviews</title>
@@ -49,7 +49,7 @@
                                 </p>
                             </div>
                             <!-- Nom de la formation -->
-                            <p class="color-light-green mrgb">
+                            <p class="formation-title mrgb">
                             <?php 
                                 if(isset($response['course_title'])){
                                     echo "Formation : " . $response['course_title'];
@@ -59,7 +59,7 @@
                            
 
                             <!-- Commentaire -->
-                            <p><?= $response['comment']; ?></p>
+                            <p class="comment"><?= $response['comment']; ?></p>
 
                         </article>
                     <?php endforeach ?>
