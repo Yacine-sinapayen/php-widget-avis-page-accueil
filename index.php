@@ -59,7 +59,7 @@
                            
 
                             <!-- Commentaire -->
-                            <p class="comment"><?= $response['comment']; var_dump( strlen(($response['comment']))); ?></p>
+                            <p class="comment"><?= $response['comment']; ?></p>
 
                         </article>
                     <?php endforeach ?>
