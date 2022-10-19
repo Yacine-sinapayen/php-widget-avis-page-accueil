@@ -22,7 +22,7 @@
 
 <body>
     <!-- Ma section n'apparaît que si mon tableau contient des elem -->
-    <?php if (count($new_array) > 0) : ?>
+    <?php if (count($new_array) > 0 ) : ?>
         <section class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -59,7 +59,7 @@
                            
 
                             <!-- Commentaire -->
-                            <p class="comment"><?= $response['comment']; ?></p>
+                            <p class="comment"><?= $response['comment']; var_dump( strlen(($response['comment']))); ?></p>
 
                         </article>
                     <?php endforeach ?>

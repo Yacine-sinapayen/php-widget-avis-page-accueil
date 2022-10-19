@@ -33,10 +33,19 @@ $data = curl_exec($ch);
 curl_close($ch);
 $responses = json_decode($data, true);
 
-//----- Je ne récupère que les notes au dessus de 4 -----//
+//----- Je ne récupère que les notes au dessus de 4 avec moins de 370 carractères -----//
 $goodValues = array_filter($responses, function ($e) {
-    return $e['rating'] >= "4";
+    return ($e['rating'] >= "4");
 });
 
+// Parmis les avis avec une note >= à 4 je ne veux que les commentaires < à 370
+// caractères pour des questions d'ésthétismes et d'affichage. 
+$goodValues2 = array_filter($goodValues, function ($e) {
+    return strlen(($e['comment'])) <= "370";
+});
+
+
+
+
 //----- Parmis ces notes au dessus de 4 je ne veux que les 20 dernières -----//
-$new_array = array_slice($goodValues, 0, 20);
+$new_array = array_slice($goodValues2, 0, 20);
